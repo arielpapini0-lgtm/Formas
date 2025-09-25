@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dojo Kata Score</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>🏆 Sistema de Puntuación de Katas</h1>
+    <select id="kataStyle">
+      <option value="japonesa">🇯🇵 Japonesa</option>
+      <option value="coreana">🇰🇷 Coreana</option>
+      <option value="china">🇨🇳 China</option>
+    </select>
+  </header>
+
+  <main>
+    <section id="competitor">
+      <h2>Competidor</h2>
+      <input type="text" id="name" placeholder="Nombre" />
+      <input type="text" id="school" placeholder="Escuela" />
+      <input type="text" id="country" placeholder="País" />
+    </section>
+
+    <section id="scorePanel">
+      <h2>Puntuación</h2>
+      <div id="scoreButtons"></div>
+      <button id="confirmScore">Confirmar</button>
+      <p>Resultado final: <span id="average">0.00</span></p>
+      <button id="guardarCompetidor">Guardar competidor</button>
+      <button id="mostrarGanadores">Mostrar podio</button>
+    </section>
+
+    <section id="results">
+      <h2>Puntajes</h2>
+      <ul id="scoreList"></ul>
+    </section>
+  </main>
+
+  <div id="competidorLista"></div>
+  <div id="podio" class="podio-fijo"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
