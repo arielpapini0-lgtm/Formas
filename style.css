@@ -1,121 +1,157 @@
-/* GENERAL RESET */
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
 body {
-  font-family: 'Segoe UI', sans-serif;
-  background-color: #111;
-  color: #fff;
-  padding: 2vh 4vw;
+  font-family: sans-serif;
+  background: #111;
+  color: #eee;
+  margin: 0;
+  padding: 20px;
 }
 
-/* CONTENEDOR PRINCIPAL */
-.container {
-  max-width: 1200px;
-  margin: auto;
-}
-
-/* SCOREBOARD */
-.scoreboard {
+header {
   display: flex;
   justify-content: space-between;
-  gap: 2vw;
-  margin-bottom: 2vh;
-  flex-wrap: wrap;
+  align-items: center;
 }
 
-.scoreboard .red,
-.scoreboard .blue {
-  flex: 1 1 45%;
-  background-color: #222;
-  padding: 2vh;
+select {
+  font-size: 1.2em;
+  padding: 5px;
+}
+
+main {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+section {
+  background: #222;
+  padding: 15px;
   border-radius: 10px;
 }
 
-.scoreboard h2 {
-  font-size: 1.6rem;
-  margin-bottom: 1vh;
-  text-align: center;
+#scoreButtons {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin: 10px 0;
 }
 
-.points, .fouls, .exits {
-  display: flex;
-  justify-content: space-around;
-  margin-top: 1vh;
-}
-
-.points div, .fouls div, .exits div {
-  font-size: 1.2rem;
-}
-
-/* BOTONES */
-button {
-  padding: 1vh 2vw;
-  font-size: 1rem;
-  margin: 1vh 0.5vw;
+#scoreButtons button {
+  font-size: 1.5em;
+  padding: 10px;
   border: none;
-  border-radius: 5px;
-  background-color: #444;
+  border-radius: 8px;
+  background: #444;
+  color: #fff;
+  cursor: pointer;
+}
+
+#scoreButtons button:hover {
+  background: #0f0;
+}
+
+#confirmScore,
+#guardarCompetidor,
+#mostrarGanadores {
+  background: #08f;
   color: white;
+  padding: 10px;
+  font-size: 1em;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  margin: 5px 0;
 }
 
-button:hover {
-  background-color: #666;
+.discard-low {
+  background-color: #c00;
+  animation: fadeOut 1s forwards;
 }
 
-/* BRACKET */
-.bracket-round {
-  margin-bottom: 2vh;
+.discard-high {
+  background-color: #00c;
+  animation: fadeOut 1s forwards;
 }
 
-.bracket-match {
-  background-color: #333;
-  padding: 1vh;
-  margin: 0.5vh 0;
-  border-radius: 5px;
-  font-size: 1rem;
+@keyframes fadeOut {
+  0% { opacity: 1; }
+  100% { opacity: 0.3; }
 }
 
-/* TEMPORIZADORES */
-.timer {
-  font-size: 2rem;
-  text-align: center;
-  margin: 2vh 0;
+#average {
+  font-size: 2em;
+  color: #0f0;
+  animation: pulse 1s infinite;
 }
 
-/* PODIO */
-#podioFinal {
+@keyframes pulse {
+  0% { text-shadow: 0 0 5px #0f0; }
+  50% { text-shadow: 0 0 20px #0f0; }
+  100% { text-shadow: 0 0 5px #0f0; }
+}
+
+#competidorLista {
+  margin-top: 30px;
+  background: #333;
+  padding: 15px;
+  border-radius: 10px;
+}
+
+#competidorLista h2 {
+  margin-top: 0;
+  color: #ffd700;
+}
+
+#competidorLista ul {
+  list-style: none;
+  padding: 0;
+}
+
+#competidorLista li {
+  padding: 5px;
+  border-bottom: 1px solid #555;
+}
+
+.podio-fijo {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #222;
+  border: 2px solid #ffd700;
+  padding: 15px;
+  border-radius: 10px;
+  width: 250px;
+  color: #fff;
+  box-shadow: 0 0 10px #ffd700;
+  animation: fadeIn 1s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.fullscreen {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
+  background: #000;
+  color: #ffd700;
+  font-size: 2em;
   display: flex;
-  justify-content: space-around;
-  margin-top: 3vh;
-  font-size: 1.2rem;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
 }
-
-/* MEDIA QUERIES PARA ANDROID */
-@media (max-width: 600px) {
-  .scoreboard {
-    flex-direction: column;
+.japonesa { background: #1a1a1a; color: #fff; }
+.coreana  { background: #001f3f; color: #fff; }
+.china    { background: #330000; color: #ffd700; }
+@media (max-width: 768px) {
+  main {
+    grid-template-columns: 1fr;
   }
-
-  .scoreboard .red,
-  .scoreboard .blue {
-    width: 100%;
-    margin-bottom: 2vh;
-  }
-
-  button {
-    width: 100%;
-    font-size: 1.1rem;
-  }
-
-  .bracket-match {
-    font-size: 0.9rem;
-  }
-
-  .timer {
-    font-size: 1.5rem;
+  #scoreButtons {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
