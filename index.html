@@ -17,20 +17,45 @@
   </header>
 
   <main>
-    <section id="competitor">
-      <h2>Competidor</h2>
-      <input type="text" id="name" placeholder="Nombre" />
-      <input type="text" id="school" placeholder="Escuela" />
-      <input type="text" id="country" placeholder="País" />
-    </section>
+    <div class="competidor-card">
+  <h3>📋 Datos del Competidor</h3>
+
+  <label>👤 Nombre:</label>
+  <input type="text" id="name">
+
+  <label>🏫 Escuela:</label>
+  <input type="text" id="school">
+
+  <label>🌍 País:</label>
+  <input type="text" id="country">
+
+  <label>📊 Categoría:</label>
+  <select id="nivelCinturon" onchange="actualizarCategoria()">
+    <option value="Kyu A">Kyu A</option>
+    <option value="Kyu B">Kyu B</option>
+    <option value="Cintos Negros">Cintos Negros</option>
+  </select>
+
+  <select id="grupoEdad" onchange="actualizarCategoria()">
+    <option value="Infantiles">Infantiles</option>
+    <option value="Juveniles">Juveniles</option>
+    <option value="Adultos">Adultos</option>
+    <option value="Senior">Senior</option>
+  </select>
+  <label for="selectorCompetidor">Seleccionar competidor:</label>
+<select id="selectorCompetidor" onchange="cargarCompetidorSeleccionado()">
+  <option value="">— Elegí un competidor —</option>
+</select>
+  <button id="guardarCompetidor">Guardar Competidor</button>
+</div>
 
     <section id="scorePanel">
       <h2>Puntuación</h2>
       <div id="scoreButtons"></div>
       <button id="confirmScore">Confirmar</button>
       <p>Resultado final: <span id="average">0.00</span></p>
-      <button id="guardarCompetidor">Guardar competidor</button>
       <button id="mostrarGanadores">Mostrar podio</button>
+      <button onclick="generarHojaImprimible()">Generar hoja imprimible</button>
     </section>
 
     <section id="results">
